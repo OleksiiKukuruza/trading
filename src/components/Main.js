@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import OrderList from "./OrderList";
-import MatchList from "./MatchList";
+import React from 'react';
+import styled from 'styled-components';
+import OrderList from './OrderList';
+import MatchList from './MatchList';
 
 const StyledMain = styled.div`
   display: flex;

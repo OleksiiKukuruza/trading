@@ -1,4 +1,4 @@
-import { ORDERS_FETCH_SUCCESS } from "../actions/ordersActions";
+import { ORDERS_FETCH_SUCCESS } from '../actions/ordersActions';
 
 const initialState = {
   sellOrders: [],

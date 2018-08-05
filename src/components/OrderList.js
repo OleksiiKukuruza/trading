@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Cell, HeaderRow, Row } from "./Table";
+import React from 'react';
+import styled from 'styled-components';
+import { Cell, HeaderRow, Row } from './Table';
 
 const StyledList = styled.div`
   margin: ${props => 2 * props.theme.spacingUnit}px;

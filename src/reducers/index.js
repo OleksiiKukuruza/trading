@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import orders from "./orders";
-import matches from "./matches";
+import { combineReducers } from 'redux';
+import orders from './orders';
+import matches from './matches';
 
 const rootReducer = combineReducers({
   orders,

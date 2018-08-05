@@ -1,8 +1,8 @@
-import Main from "../components/Main";
-import { startOrdersPolling } from "../actions/ordersActions";
-import { lifecycle, compose } from "recompose";
-import { connect } from "react-redux";
-import { getSellOrders, getBuyOrders, getMatches } from "../selectors";
+import Main from '../components/Main';
+import { startOrdersPolling } from '../actions/ordersActions';
+import { lifecycle, compose } from 'recompose';
+import { connect } from 'react-redux';
+import { getSellOrders, getBuyOrders, getMatches } from '../selectors';
 
 const mapStateToProps = state => ({
   sellOrders: getSellOrders(state),

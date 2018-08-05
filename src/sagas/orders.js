@@ -1,10 +1,10 @@
-import { put, takeLatest, call, select } from "redux-saga/effects";
-import { delay } from "redux-saga";
+import { put, takeLatest, call, select } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import {
   START_ORDERS_POLLING,
   fetchOrdersSuccess
-} from "../actions/ordersActions";
-import { getBuyOrders, getSellOrders } from "../selectors";
+} from '../actions/ordersActions';
+import { getBuyOrders, getSellOrders } from '../selectors';
 
 const getOrders = start =>
   fetch(`http://localhost:5001/listOrders?start=${start}&size=100`).then(res =>
@@ -12,8 +12,8 @@ const getOrders = start =>
   );
 
 const generateMatches = (newOrders, prevSellOrders, prevBuyOrders) => {
-  const newSellOrders = newOrders.filter(order => order.type === "sell");
-  const newBuyOrders = newOrders.filter(order => order.type === "buy");
+  const newSellOrders = newOrders.filter(order => order.type === 'sell');
+  const newBuyOrders = newOrders.filter(order => order.type === 'buy');
 
   const sellOrders = [...prevSellOrders, ...newSellOrders].sort(
     (a, b) => a.price - b.price || a.id - b.id
