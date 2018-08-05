@@ -7,7 +7,7 @@ const StyledList = styled.div`
 `;
 
 const StyledListContent = styled.div`
-  border: 1px solid ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.primary.main};
 `;
 
 const OrderList = ({ orders, title }) => (

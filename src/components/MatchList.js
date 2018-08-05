@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Cell, HeaderRow, Row } from './Table';
+import MatchModal from './MatchModal';
 
 const StyledList = styled.div`
   margin: ${props => 2 * props.theme.spacingUnit}px;
 `;
 
 const StyledListContent = styled.div`
-  border: 1px solid ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.primary.main};
 `;
 
-const MatchList = ({ matches }) => (
+const MatchList = ({ matches, openModal, closeModal, openedMatch }) => (
   <StyledList>
     Matches
     <StyledListContent>
@@ -20,13 +21,14 @@ const MatchList = ({ matches }) => (
         <Cell>Quantity</Cell>
       </HeaderRow>
       {matches.map(match => (
-        <Row key={`${match.sell.id}-${match.buy.id}`}>
+        <Row key={`${match.sell.id}-${match.buy.id}`} onClick={() => openModal(match)}>
           <Cell>{new Date(match.time).toLocaleTimeString()}</Cell>
           <Cell>{(match.buy.price + match.sell.price) / 2}</Cell>
           <Cell>{Math.min(match.sell.quantity, match.buy.quantity)}</Cell>
         </Row>
       ))}
     </StyledListContent>
+    {openedMatch && <MatchModal match={openedMatch} onClose={closeModal} />}
   </StyledList>
 );
 
