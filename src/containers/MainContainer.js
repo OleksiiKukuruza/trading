@@ -2,7 +2,11 @@ import Main from '../components/Main';
 import { startOrdersPolling } from '../actions/ordersActions';
 import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
-import { getFirstSellOrders, getFirstBuyOrders, getFirstMatches } from '../selectors';
+import {
+  getFirstSellOrders,
+  getFirstBuyOrders,
+  getFirstMatches
+} from '../selectors';
 
 const mapStateToProps = state => ({
   sellOrders: getFirstSellOrders(state),
