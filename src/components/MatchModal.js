@@ -12,26 +12,28 @@ const StyledBlock = styled.div`
 `;
 
 const MatchModal = ({ match, onClose }) => (
-  <Modal isOpen onRequestClose={onClose} style={{
-    content: {
-      bottom: 'auto',
-      minHeight: '10rem',
-      left: '50%',
-      padding: '2rem',
-      position: 'fixed',
-      right: 'auto',
-      top: '50%',
-      transform: 'translate(-50%,-50%)',
-      minWidth: '20rem',
-      width: '80%',
-      maxWidth: '60rem'
-    }
-  }}>
+  <Modal
+    isOpen
+    onRequestClose={onClose}
+    style={{
+      content: {
+        bottom: 'auto',
+        minHeight: '10rem',
+        left: '50%',
+        padding: '2rem',
+        position: 'fixed',
+        right: 'auto',
+        top: '50%',
+        transform: 'translate(-50%,-50%)',
+        minWidth: '20rem',
+        width: '80%',
+        maxWidth: '60rem'
+      }
+    }}
+  >
     <StyledBlock>
       <HeaderRow>
-        <Cell>
-          General Info:
-        </Cell>
+        <Cell>General Info:</Cell>
       </HeaderRow>
       <Row>
         <Cell>Match Time</Cell>
@@ -48,9 +50,7 @@ const MatchModal = ({ match, onClose }) => (
     </StyledBlock>
     <StyledBlock>
       <HeaderRow>
-        <Cell>
-          Sell Info:
-        </Cell>
+        <Cell>Sell Info:</Cell>
       </HeaderRow>
       <Row>
         <Cell>Id:</Cell>
@@ -67,9 +67,7 @@ const MatchModal = ({ match, onClose }) => (
     </StyledBlock>
     <StyledBlock>
       <HeaderRow>
-        <Cell>
-          Buy Info:
-        </Cell>
+        <Cell>Buy Info:</Cell>
       </HeaderRow>
       <Row>
         <Cell>Id:</Cell>

@@ -5,39 +5,12 @@ import {
   fetchOrdersSuccess
 } from '../actions/ordersActions';
 import { getBuyOrders, getSellOrders } from '../selectors';
+import generateMatches from '../utils/generateMatches';
 
 const getOrders = start =>
   fetch(`http://localhost:5001/listOrders?start=${start}&size=100`).then(res =>
     res.json()
   );
-
-const generateMatches = ({ mergedSellOrders, mergedBuyOrders }) => {
-  const time = Date.now();
-  let matches = [];
-  let sellOrders = [...mergedSellOrders];
-  let buyOrders = [...mergedBuyOrders];
-
-  while (sellOrders[0].price <= buyOrders[0].price) {
-    const sell = { ...sellOrders[0] };
-    const buy = { ...buyOrders[0] };
-
-    const quantity = Math.min(sell.quantity, buy.quantity);
-
-    if (buy.quantity === sell.quantity) {
-      buyOrders = buyOrders.slice(1);
-      sellOrders = sellOrders.slice(1);
-    } else if (quantity === sell.quantity) {
-      sellOrders = sellOrders.slice(1);
-      buyOrders[0].quantity = buy.quantity - quantity;
-    } else {
-      buyOrders = buyOrders.slice(1);
-      sellOrders[0].quantity = sell.quantity - quantity;
-    }
-
-    matches = [...matches, { time, sell, buy }];
-  }
-  return { sellOrders, buyOrders, matches };
-};
 
 const getSplittedOrders = newOrders => {
   const newSellOrders = newOrders.filter(order => order.type === 'sell');

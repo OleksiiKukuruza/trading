@@ -21,7 +21,10 @@ const MatchList = ({ matches, openModal, closeModal, openedMatch }) => (
         <Cell>Quantity</Cell>
       </HeaderRow>
       {matches.map(match => (
-        <Row key={`${match.sell.id}-${match.buy.id}`} onClick={() => openModal(match)}>
+        <Row
+          key={`${match.sell.id}-${match.buy.id}`}
+          onClick={() => openModal(match)}
+        >
           <Cell>{new Date(match.time).toLocaleTimeString()}</Cell>
           <Cell>{(match.buy.price + match.sell.price) / 2}</Cell>
           <Cell>{Math.min(match.sell.quantity, match.buy.quantity)}</Cell>
