@@ -11,19 +11,11 @@ const getOrders = start =>
     res.json()
   );
 
-const generateMatches = (newOrders, prevSellOrders, prevBuyOrders) => {
-  const newSellOrders = newOrders.filter(order => order.type === 'sell');
-  const newBuyOrders = newOrders.filter(order => order.type === 'buy');
-
-  const sellOrders = [...prevSellOrders, ...newSellOrders].sort(
-    (a, b) => a.price - b.price || a.id - b.id
-  );
-  const buyOrders = [...prevBuyOrders, ...newBuyOrders].sort(
-    (a, b) => b.price - a.price || a.id - b.id
-  );
+const generateMatches = ({ mergedSellOrders, mergedBuyOrders }) => {
   const time = Date.now();
-
-  const matches = [];
+  let matches = [];
+  let sellOrders = [...mergedSellOrders];
+  let buyOrders = [...mergedBuyOrders];
 
   while (sellOrders[0].price <= buyOrders[0].price) {
     const sell = { ...sellOrders[0] };
@@ -31,18 +23,37 @@ const generateMatches = (newOrders, prevSellOrders, prevBuyOrders) => {
 
     const quantity = Math.min(sell.quantity, buy.quantity);
 
-    if (quantity === sell.quantity) {
-      sellOrders.shift();
+    if (buy.quantity === sell.quantity) {
+      buyOrders = buyOrders.slice(1);
+      sellOrders = sellOrders.slice(1);
+    } else if (quantity === sell.quantity) {
+      sellOrders = sellOrders.slice(1);
       buyOrders[0].quantity = buy.quantity - quantity;
     } else {
-      buyOrders.shift();
+      buyOrders = buyOrders.slice(1);
       sellOrders[0].quantity = sell.quantity - quantity;
     }
 
-    matches.push({ time, sell, buy });
+    matches = [...matches, { time, sell, buy }];
   }
   return { sellOrders, buyOrders, matches };
 };
+
+const getSplittedOrders = newOrders => {
+  const newSellOrders = newOrders.filter(order => order.type === 'sell');
+  const newBuyOrders = newOrders.filter(order => order.type === 'buy');
+  return { newSellOrders, newBuyOrders };
+};
+
+const getMergedSellOrders = (prevSellOrders, newSellOrders) =>
+  [...prevSellOrders, ...newSellOrders].sort(
+    (a, b) => a.price - b.price || a.id - b.id
+  );
+
+const getMergedBuyOrders = (prevBuyOrders, newBuyOrders) =>
+  [...prevBuyOrders, ...newBuyOrders].sort(
+    (a, b) => b.price - a.price || a.id - b.id
+  );
 
 function* pollOrders() {
   let start = 0;
@@ -52,11 +63,14 @@ function* pollOrders() {
 
     const prevSellOrders = yield select(getSellOrders);
     const prevBuyOrders = yield select(getBuyOrders);
-    const { sellOrders, buyOrders, matches } = generateMatches(
-      newOrders,
-      prevSellOrders,
-      prevBuyOrders
-    );
+    const { newSellOrders, newBuyOrders } = getSplittedOrders(newOrders);
+    const mergedSellOrders = getMergedSellOrders(prevSellOrders, newSellOrders);
+    const mergedBuyOrders = getMergedBuyOrders(prevBuyOrders, newBuyOrders);
+
+    const { sellOrders, buyOrders, matches } = generateMatches({
+      mergedSellOrders,
+      mergedBuyOrders
+    });
 
     yield put(
       fetchOrdersSuccess({
