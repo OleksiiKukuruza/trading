@@ -21,7 +21,7 @@ const MatchList = ({ matches }) => (
       </HeaderRow>
       {matches.map(match => (
         <Row key={`${match.sell.id}-${match.buy.id}`}>
-          <Cell>{match.time}</Cell>
+          <Cell>{new Date(match.time).toLocaleTimeString()}</Cell>
           <Cell>{(match.buy.price + match.sell.price) / 2}</Cell>
           <Cell>{Math.min(match.sell.quantity, match.buy.quantity)}</Cell>
         </Row>

@@ -21,7 +21,7 @@ const generateMatches = (newOrders, prevSellOrders, prevBuyOrders) => {
   const buyOrders = [...prevBuyOrders, ...newBuyOrders].sort(
     (a, b) => b.price - a.price || a.id - b.id
   );
-  const time = new Date().toLocaleTimeString();
+  const time = Date.now();
 
   const matches = [];
 
