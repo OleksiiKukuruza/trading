@@ -37,12 +37,9 @@ function* pollOrders() {
     const prevSellOrders = yield select(getSellOrders);
     const prevBuyOrders = yield select(getBuyOrders);
     const { newSellOrders, newBuyOrders } = getSplittedOrders(newOrders);
-    const mergedSellOrders = getMergedSellOrders(prevSellOrders, newSellOrders);
-    const mergedBuyOrders = getMergedBuyOrders(prevBuyOrders, newBuyOrders);
-
     const { sellOrders, buyOrders, matches } = generateMatches({
-      mergedSellOrders,
-      mergedBuyOrders
+      sellOrders: getMergedSellOrders(prevSellOrders, newSellOrders),
+      buyOrders: getMergedBuyOrders(prevBuyOrders, newBuyOrders)
     });
 
     yield put(
