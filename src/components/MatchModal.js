@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { Cell, HeaderRow, Row } from './Table';
+import { matchPropType } from './propTypes';
 
 const StyledBlock = styled.div`
   border: 1px solid ${props => props.theme.primary.main};
@@ -84,5 +86,10 @@ const MatchModal = ({ match, onClose }) => (
     </StyledBlock>
   </Modal>
 );
+
+MatchModal.propTypes = {
+  match: matchPropType.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default MatchModal;

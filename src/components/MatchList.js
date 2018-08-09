@@ -1,20 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Cell, HeaderRow, Row } from './Table';
+import { Cell, HeaderRow, Row, Table } from './Table';
 import MatchModal from './MatchModal';
-
-const StyledList = styled.div`
-  margin: ${props => 2 * props.theme.spacingUnit}px;
-`;
-
-const StyledListContent = styled.div`
-  border: 1px solid ${props => props.theme.primary.main};
-`;
+import PropTypes from 'prop-types';
+import { matchPropType } from './propTypes';
 
 const MatchList = ({ matches, openModal, closeModal, openedMatch }) => (
-  <StyledList>
+  <div>
     Matches
-    <StyledListContent>
+    <Table>
       <HeaderRow>
         <Cell>Match Time</Cell>
         <Cell>Price</Cell>
@@ -30,9 +23,16 @@ const MatchList = ({ matches, openModal, closeModal, openedMatch }) => (
           <Cell>{Math.min(match.sell.quantity, match.buy.quantity)}</Cell>
         </Row>
       ))}
-    </StyledListContent>
+    </Table>
     {openedMatch && <MatchModal match={openedMatch} onClose={closeModal} />}
-  </StyledList>
+  </div>
 );
+
+MatchList.propTypes = {
+  matches: PropTypes.arrayOf(matchPropType).isRequired,
+  openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  openedMatch: matchPropType
+};
 
 export default MatchList;

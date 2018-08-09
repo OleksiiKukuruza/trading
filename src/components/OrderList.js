@@ -1,19 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Cell, HeaderRow, Row } from './Table';
-
-const StyledList = styled.div`
-  margin: ${props => 2 * props.theme.spacingUnit}px;
-`;
-
-const StyledListContent = styled.div`
-  border: 1px solid ${props => props.theme.primary.main};
-`;
+import PropTypes from 'prop-types';
+import { Cell, HeaderRow, Row, Table } from './Table';
+import { orderPropType } from './propTypes';
 
 const OrderList = ({ orders, title }) => (
-  <StyledList>
+  <div>
     {title}
-    <StyledListContent>
+    <Table>
       <HeaderRow>
         <Cell>Order Id</Cell>
         <Cell>Price</Cell>
@@ -26,8 +19,13 @@ const OrderList = ({ orders, title }) => (
           <Cell>{order.quantity}</Cell>
         </Row>
       ))}
-    </StyledListContent>
-  </StyledList>
+    </Table>
+  </div>
 );
+
+OrderList.propTypes = {
+  orders: PropTypes.arrayOf(orderPropType).isRequired,
+  title: PropTypes.string.isRequired
+};
 
 export default OrderList;

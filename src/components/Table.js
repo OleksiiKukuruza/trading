@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const Table = styled.div`
+  border: 1px solid ${props => props.theme.primary.main};
+`;
+
 const Row = styled.div`
   display: flex;
 
@@ -24,4 +28,4 @@ Cell.propTypes = {
   justifyContent: PropTypes.string
 };
 
-export { Row, HeaderRow, Cell };
+export { Table, Row, HeaderRow, Cell };
