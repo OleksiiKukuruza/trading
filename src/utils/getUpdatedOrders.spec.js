@@ -28,7 +28,7 @@ describe('getUpdatedOrders', () => {
     ];
     expect(getUpdatedOrders(prevSellOrders, prevBuyOrders)).toEqual({
       sellOrders: [prevSellOrders[1]],
-      buyOrders: [{...prevBuyOrders[0], quantity: 8}, prevBuyOrders[1]]
+      buyOrders: [{ ...prevBuyOrders[0], quantity: 8 }, prevBuyOrders[1]]
     });
   });
 
@@ -43,7 +43,7 @@ describe('getUpdatedOrders', () => {
       { id: 4, price: 98, quantity: 10, type: 'buy' }
     ];
     expect(getUpdatedOrders(prevSellOrders, prevBuyOrders)).toEqual({
-      sellOrders: [{...prevSellOrders[0], quantity: 6}, prevSellOrders[1]],
+      sellOrders: [{ ...prevSellOrders[0], quantity: 6 }, prevSellOrders[1]],
       buyOrders: [prevBuyOrders[1]]
     });
   });
