@@ -21,8 +21,12 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
     "husky": "^1.0.0-rc.13",
     "jest-fetch-mock": "^1.6.5",
+    "jest-styled-components": "^6.0.1",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.0"
   },
@@ -35,6 +39,11 @@
     "*.{js,json,css,md}": [
       "prettier --write",
       "git add"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   }
 }

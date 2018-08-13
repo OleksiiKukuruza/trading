@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Cell, HeaderRow, Row } from './Table';
 import { matchPropType } from './propTypes';
 
-const StyledBlock = styled.div`
+export const StyledBlock = styled.div`
   border: 1px solid ${props => props.theme.primary.main};
 
   :not(:last-child) {

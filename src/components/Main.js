@@ -5,7 +5,7 @@ import OrderList from './OrderList';
 import MatchListContainer from '../containers/MatchListContainer';
 import { matchPropType, orderPropType } from './propTypes';
 
-const StyledMain = styled.div`
+export const StyledMain = styled.div`
   display: flex;
   justify-content: space-between;
   padding: ${props => props.theme.spacingUnit}px;
