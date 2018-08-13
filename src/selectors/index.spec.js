@@ -35,18 +35,32 @@ describe('selectors', () => {
   it('getFirstSellOrders returns first 20 sell orders', () => {
     const state = {
       orders: {
-        sellOrders: [...new Array(50)].fill({ id: 1, price: 100, quantity: 10, type: 'sell' })
+        sellOrders: [...new Array(50)].fill({
+          id: 1,
+          price: 100,
+          quantity: 10,
+          type: 'sell'
+        })
       }
     };
-    expect(getFirstSellOrders(state)).toEqual(state.orders.sellOrders.slice(0, 20));
+    expect(getFirstSellOrders(state)).toEqual(
+      state.orders.sellOrders.slice(0, 20)
+    );
   });
 
   it('getFirstBuyOrders returns first 20 buy orders', () => {
     const state = {
       orders: {
-        buyOrders: [...new Array(50)].fill({ id: 1, price: 100, quantity: 10, type: 'buy' })
+        buyOrders: [...new Array(50)].fill({
+          id: 1,
+          price: 100,
+          quantity: 10,
+          type: 'buy'
+        })
       }
     };
-    expect(getFirstBuyOrders(state)).toEqual(state.orders.buyOrders.slice(0, 20));
+    expect(getFirstBuyOrders(state)).toEqual(
+      state.orders.buyOrders.slice(0, 20)
+    );
   });
 });

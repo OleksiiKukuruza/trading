@@ -6,29 +6,12 @@ import {
 } from '../actions/ordersActions';
 import { getBuyOrders, getSellOrders } from '../selectors';
 import generateMatches from '../utils/generateMatches';
+import splitOrders from '../utils/splitOrders';
+import getMergedSellOrders from '../utils/getMergedSellOrders';
+import getMergedBuyOrders from '../utils/getMergedBuyOrders';
+import getOrders from '../utils/getOrders';
 
-const getOrders = start =>
-  fetch(`http://localhost:5001/listOrders?start=${start}&size=100`).then(res =>
-    res.json()
-  );
-
-const getSplittedOrders = newOrders => {
-  const newSellOrders = newOrders.filter(order => order.type === 'sell');
-  const newBuyOrders = newOrders.filter(order => order.type === 'buy');
-  return { newSellOrders, newBuyOrders };
-};
-
-const getMergedSellOrders = (prevSellOrders, newSellOrders) =>
-  [...prevSellOrders, ...newSellOrders].sort(
-    (a, b) => a.price - b.price || a.id - b.id
-  );
-
-const getMergedBuyOrders = (prevBuyOrders, newBuyOrders) =>
-  [...prevBuyOrders, ...newBuyOrders].sort(
-    (a, b) => b.price - a.price || a.id - b.id
-  );
-
-function* pollOrders() {
+export function* pollOrders() {
   let start = 0;
   while (true) {
     const newOrders = yield call(getOrders, start);
@@ -36,11 +19,22 @@ function* pollOrders() {
 
     const prevSellOrders = yield select(getSellOrders);
     const prevBuyOrders = yield select(getBuyOrders);
-    const { newSellOrders, newBuyOrders } = getSplittedOrders(newOrders);
-    const { sellOrders, buyOrders, matches } = generateMatches({
-      sellOrders: getMergedSellOrders(prevSellOrders, newSellOrders),
-      buyOrders: getMergedBuyOrders(prevBuyOrders, newBuyOrders)
-    });
+    const { newSellOrders, newBuyOrders } = yield call(splitOrders, newOrders);
+    const mergedSellOrders = yield call(
+      getMergedSellOrders,
+      prevSellOrders,
+      newSellOrders
+    );
+    const mergedBuyOrders = yield call(
+      getMergedBuyOrders,
+      prevBuyOrders,
+      newBuyOrders
+    );
+    const { sellOrders, buyOrders, matches } = yield call(
+      generateMatches,
+      mergedSellOrders,
+      mergedBuyOrders
+    );
 
     yield put(
       fetchOrdersSuccess({
@@ -49,7 +43,7 @@ function* pollOrders() {
         matches
       })
     );
-    yield delay(5000);
+    yield call(delay, 5000);
   }
 }
 
