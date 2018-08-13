@@ -4,7 +4,10 @@ import watchFetchOrders, { pollOrders } from './orders';
 import { getBuyOrders, getSellOrders } from '../selectors';
 import generateMatches from '../utils/generateMatches';
 import splitOrders from '../utils/splitOrders';
-import { fetchOrdersSuccess, START_ORDERS_POLLING } from '../actions/ordersActions';
+import {
+  fetchOrdersSuccess,
+  START_ORDERS_POLLING
+} from '../actions/ordersActions';
 import sortSellOrders from '../utils/sortSellOrders';
 import sortBuyOrders from '../utils/sortBuyOrders';
 import getOrders from '../utils/getOrders';
@@ -93,7 +96,9 @@ describe('orders Sagas', () => {
 
   it('watchFetchOrders Saga waits for START_ORDERS_POLLING action and starts polling', () => {
     const gen = watchFetchOrders();
-    expect(gen.next().value).toEqual(takeLatest(START_ORDERS_POLLING, pollOrders));
+    expect(gen.next().value).toEqual(
+      takeLatest(START_ORDERS_POLLING, pollOrders)
+    );
     expect(gen.next().done).toEqual(true);
   });
 });

@@ -9,7 +9,10 @@ describe('ordersActions', () => {
 
   describe('fetchOrdersSuccess', () => {
     it('creates ORDERS_FETCH_SUCCESS action', () => {
-      expect(fetchOrdersSuccess()).toEqual({ type: 'ORDERS_FETCH_SUCCESS' });
+      expect(fetchOrdersSuccess({ foo: 'foo' })).toEqual({
+        type: 'ORDERS_FETCH_SUCCESS',
+        payload: { foo: 'foo' }
+      });
     });
   });
 });

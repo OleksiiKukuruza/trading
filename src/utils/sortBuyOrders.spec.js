@@ -8,6 +8,11 @@ describe('sortBuyOrders', () => {
       { id: 3, price: 100, quantity: 10, type: 'buy' },
       { id: 4, price: 75, quantity: 10, type: 'buy' }
     ];
-    expect(sortBuyOrders(orders)).toEqual([orders[0], orders[2], orders[3], orders[1]]);
+    expect(sortBuyOrders(orders)).toEqual([
+      orders[0],
+      orders[2],
+      orders[3],
+      orders[1]
+    ]);
   });
 });

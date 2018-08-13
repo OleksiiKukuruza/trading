@@ -5,7 +5,9 @@ describe('getOrders', () => {
     const result = { test: 'test' };
     fetch.mockResponse(JSON.stringify(result));
     const res = await getOrders(6);
-    expect(fetch).toHaveBeenCalledWith('http://localhost:5001/listOrders?start=6&size=100');
+    expect(fetch).toHaveBeenCalledWith(
+      'http://localhost:5001/listOrders?start=6&size=100'
+    );
     expect(res).toEqual(result);
   });
 });

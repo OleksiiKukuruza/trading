@@ -20,14 +20,14 @@ export function* pollOrders() {
     const prevSellOrders = yield select(getSellOrders);
     const prevBuyOrders = yield select(getBuyOrders);
     const { newSellOrders, newBuyOrders } = yield call(splitOrders, newOrders);
-    const mergedSellOrders = yield call(
-      sortSellOrders,
-      [...prevSellOrders, ...newSellOrders]
-    );
-    const mergedBuyOrders = yield call(
-      sortBuyOrders,
-      [...prevBuyOrders, ...newBuyOrders]
-    );
+    const mergedSellOrders = yield call(sortSellOrders, [
+      ...prevSellOrders,
+      ...newSellOrders
+    ]);
+    const mergedBuyOrders = yield call(sortBuyOrders, [
+      ...prevBuyOrders,
+      ...newBuyOrders
+    ]);
     const { sellOrders, buyOrders, matches } = yield call(
       generateMatches,
       mergedSellOrders,
