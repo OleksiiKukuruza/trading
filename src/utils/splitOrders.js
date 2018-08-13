@@ -1,6 +1,6 @@
-const splitOrders = newOrders => {
-  const newSellOrders = newOrders.filter(order => order.type === 'sell');
-  const newBuyOrders = newOrders.filter(order => order.type === 'buy');
+const splitOrders = orders => {
+  const newSellOrders = orders.filter(order => order.type === 'sell');
+  const newBuyOrders = orders.filter(order => order.type === 'buy');
   return { newSellOrders, newBuyOrders };
 };
 
