@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders Cell without crashing 1`] = `
+.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Table renders HeaderRow without crashing 1`] = `
+.c0 {
+  background-color: #f1f4f5;
+}
+
+<styled.div
+  className="c0"
+  theme={
+    Object {
+      "background": "#f1f4f5",
+      "primary": Object {
+        "contrastText": "#fff",
+        "main": "#54b6c8",
+      },
+      "spacingUnit": 8,
+    }
+  }
+/>
+`;
+
+exports[`Table renders Row without crashing 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0:not(:last-child) {
+  border-bottom: 1px solid #f1f4f5;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Table renders Table without crashing 1`] = `
+.c0 {
+  border: 1px solid #54b6c8;
+}
+
+<div
+  className="c0"
+/>
+`;

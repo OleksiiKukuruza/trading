@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main renders StyledMain 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.c0 > div {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 8px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Main renders without crashing 1`] = `
+<styled.div>
+  <OrderList
+    orders={
+      Array [
+        Object {
+          "id": 1,
+          "price": 123,
+          "quantity": 10,
+        },
+      ]
+    }
+    title="Buy"
+  />
+  <OrderList
+    orders={
+      Array [
+        Object {
+          "id": 2,
+          "price": 233,
+          "quantity": 5,
+        },
+      ]
+    }
+    title="Sell"
+  />
+  <withState(withHandlers(MatchList))
+    matches={
+      Array [
+        Object {
+          "buy": Object {
+            "id": 4,
+            "price": 60,
+            "quantity": 6,
+          },
+          "sell": Object {
+            "id": 3,
+            "price": 50,
+            "quantity": 3,
+          },
+          "time": 123,
+        },
+      ]
+    }
+  />
+</styled.div>
+`;

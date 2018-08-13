@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MatchModal renders StyledBlock 1`] = `
+.c0 {
+  border: 1px solid #54b6c8;
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`MatchModal renders without crashing 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  closeTimeoutMS={0}
+  isOpen={true}
+  onRequestClose={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+  style={
+    Object {
+      "content": Object {
+        "bottom": "auto",
+        "left": "50%",
+        "maxWidth": "60rem",
+        "minHeight": "10rem",
+        "minWidth": "20rem",
+        "padding": "2rem",
+        "position": "fixed",
+        "right": "auto",
+        "top": "50%",
+        "transform": "translate(-50%,-50%)",
+        "width": "80%",
+      },
+    }
+  }
+>
+  <styled.div>
+    <Styled(styled.div)>
+      <styled.div>
+        General Info:
+      </styled.div>
+    </Styled(styled.div)>
+    <styled.div>
+      <styled.div>
+        Match Time
+      </styled.div>
+      <styled.div>
+        3:00:00 AM
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Match Price
+      </styled.div>
+      <styled.div>
+        55
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Match Amount
+      </styled.div>
+      <styled.div>
+        3
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <Styled(styled.div)>
+      <styled.div>
+        Sell Info:
+      </styled.div>
+    </Styled(styled.div)>
+    <styled.div>
+      <styled.div>
+        Id:
+      </styled.div>
+      <styled.div>
+        3
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Price:
+      </styled.div>
+      <styled.div>
+        50
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Amount:
+      </styled.div>
+      <styled.div>
+        3
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <Styled(styled.div)>
+      <styled.div>
+        Buy Info:
+      </styled.div>
+    </Styled(styled.div)>
+    <styled.div>
+      <styled.div>
+        Id:
+      </styled.div>
+      <styled.div>
+        4
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Price:
+      </styled.div>
+      <styled.div>
+        60
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Amount:
+      </styled.div>
+      <styled.div>
+        6
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</Modal>
+`;

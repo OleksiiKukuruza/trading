@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderList renders without crashing 1`] = `
+<div>
+  Title
+  <styled.div>
+    <Styled(styled.div)>
+      <styled.div>
+        Order Id
+      </styled.div>
+      <styled.div>
+        Price
+      </styled.div>
+      <styled.div>
+        Quantity
+      </styled.div>
+    </Styled(styled.div)>
+    <styled.div
+      key="1"
+    >
+      <styled.div>
+        1
+      </styled.div>
+      <styled.div>
+        99
+      </styled.div>
+      <styled.div>
+        10
+      </styled.div>
+    </styled.div>
+    <styled.div
+      key="3"
+    >
+      <styled.div>
+        3
+      </styled.div>
+      <styled.div>
+        101
+      </styled.div>
+      <styled.div>
+        10
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</div>
+`;

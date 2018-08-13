@@ -8,20 +8,17 @@ import {
   getFirstMatches
 } from '../selectors';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   sellOrders: getFirstSellOrders(state),
   buyOrders: getFirstBuyOrders(state),
   matches: getFirstMatches(state)
 });
 
-const withFetch = connect(
-  mapStateToProps,
-  {
-    startOrdersPolling
-  }
-);
+const withFetch = connect(mapStateToProps, {
+  startOrdersPolling
+});
 
-const withLifecycle = lifecycle({
+export const withLifecycle = lifecycle({
   componentDidMount() {
     this.props.startOrdersPolling();
   }

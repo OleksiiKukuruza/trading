@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MatchList renders without crashing 1`] = `
+<div>
+  Matches
+  <styled.div>
+    <Styled(styled.div)>
+      <styled.div>
+        Match Time
+      </styled.div>
+      <styled.div>
+        Price
+      </styled.div>
+      <styled.div>
+        Quantity
+      </styled.div>
+    </Styled(styled.div)>
+    <styled.div
+      key="3-4"
+      onClick={[Function]}
+    >
+      <styled.div>
+        3:00:00 AM
+      </styled.div>
+      <styled.div>
+        55
+      </styled.div>
+      <styled.div>
+        3
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <MatchModal
+    match={
+      Object {
+        "buy": Object {
+          "id": 4,
+          "price": 60,
+          "quantity": 6,
+        },
+        "sell": Object {
+          "id": 3,
+          "price": 50,
+          "quantity": 3,
+        },
+        "time": 123,
+      }
+    }
+    onClose={[Function]}
+  />
+</div>
+`;
