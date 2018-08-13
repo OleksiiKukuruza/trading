@@ -5,8 +5,8 @@ import { getBuyOrders, getSellOrders } from '../selectors';
 import generateMatches from '../utils/generateMatches';
 import splitOrders from '../utils/splitOrders';
 import { fetchOrdersSuccess, START_ORDERS_POLLING } from '../actions/ordersActions';
-import getMergedSellOrders from '../utils/getMergedSellOrders';
-import getMergedBuyOrders from '../utils/getMergedBuyOrders';
+import sortSellOrders from '../utils/sortSellOrders';
+import sortBuyOrders from '../utils/sortBuyOrders';
 import getOrders from '../utils/getOrders';
 
 describe('orders Sagas', () => {
@@ -66,12 +66,12 @@ describe('orders Sagas', () => {
     const newSellOrders = [newOrders[1]];
     const newBuyOrders = [newOrders[0]];
     expect(gen.next({ newSellOrders, newBuyOrders }).value).toEqual(
-      call(getMergedSellOrders, prevSellOrders, newSellOrders)
+      call(sortSellOrders, [...prevSellOrders, ...newSellOrders])
     );
 
     const mergedSellOrders = [...newSellOrders, ...prevSellOrders];
     expect(gen.next(mergedSellOrders).value).toEqual(
-      call(getMergedBuyOrders, prevBuyOrders, newBuyOrders)
+      call(sortBuyOrders, [...prevBuyOrders, ...newBuyOrders])
     );
 
     const mergedBuyOrders = [...newBuyOrders, ...prevBuyOrders];

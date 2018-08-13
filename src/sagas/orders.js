@@ -7,8 +7,8 @@ import {
 import { getBuyOrders, getSellOrders } from '../selectors';
 import generateMatches from '../utils/generateMatches';
 import splitOrders from '../utils/splitOrders';
-import getMergedSellOrders from '../utils/getMergedSellOrders';
-import getMergedBuyOrders from '../utils/getMergedBuyOrders';
+import sortSellOrders from '../utils/sortSellOrders';
+import sortBuyOrders from '../utils/sortBuyOrders';
 import getOrders from '../utils/getOrders';
 
 export function* pollOrders() {
@@ -21,14 +21,12 @@ export function* pollOrders() {
     const prevBuyOrders = yield select(getBuyOrders);
     const { newSellOrders, newBuyOrders } = yield call(splitOrders, newOrders);
     const mergedSellOrders = yield call(
-      getMergedSellOrders,
-      prevSellOrders,
-      newSellOrders
+      sortSellOrders,
+      [...prevSellOrders, ...newSellOrders]
     );
     const mergedBuyOrders = yield call(
-      getMergedBuyOrders,
-      prevBuyOrders,
-      newBuyOrders
+      sortBuyOrders,
+      [...prevBuyOrders, ...newBuyOrders]
     );
     const { sellOrders, buyOrders, matches } = yield call(
       generateMatches,
