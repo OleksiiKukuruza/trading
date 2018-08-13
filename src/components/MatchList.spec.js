@@ -16,15 +16,29 @@ describe('MatchList', () => {
     const { wrapper } = setup(MatchList, {
       openModal: () => null,
       closeModal: () => null,
-      openedMatch: { time: 123, sell: { id: 3, price: 50, quantity: 3 }, buy: { id: 4, price: 60, quantity: 6 } },
-      matches: [{ time: 123, sell: { id: 3, price: 50, quantity: 3 }, buy: { id: 4, price: 60, quantity: 6 } }]
+      openedMatch: {
+        time: 123,
+        sell: { id: 3, price: 50, quantity: 3 },
+        buy: { id: 4, price: 60, quantity: 6 }
+      },
+      matches: [
+        {
+          time: 123,
+          sell: { id: 3, price: 50, quantity: 3 },
+          buy: { id: 4, price: 60, quantity: 6 }
+        }
+      ]
     });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('handles click on a row', () => {
     const openModal = jest.fn();
-    const openedMatch = { time: 123, sell: { id: 3, price: 50, quantity: 3 }, buy: { id: 4, price: 60, quantity: 6 } };
+    const openedMatch = {
+      time: 123,
+      sell: { id: 3, price: 50, quantity: 3 },
+      buy: { id: 4, price: 60, quantity: 6 }
+    };
     const { wrapper } = setup(MatchList, {
       openModal,
       closeModal: () => null,

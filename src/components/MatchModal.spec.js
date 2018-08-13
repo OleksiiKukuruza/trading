@@ -15,7 +15,11 @@ describe('MatchModal', () => {
   it('renders without crashing', () => {
     const { wrapper } = setup(MatchModal, {
       onClose: () => null,
-      match: { time: 123, sell: { id: 3, price: 50, quantity: 3 }, buy: { id: 4, price: 60, quantity: 6 } }
+      match: {
+        time: 123,
+        sell: { id: 3, price: 50, quantity: 3 },
+        buy: { id: 4, price: 60, quantity: 6 }
+      }
     });
     expect(wrapper).toMatchSnapshot();
   });

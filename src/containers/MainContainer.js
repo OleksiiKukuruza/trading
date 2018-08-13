@@ -14,9 +14,12 @@ export const mapStateToProps = state => ({
   matches: getFirstMatches(state)
 });
 
-const withFetch = connect(mapStateToProps, {
-  startOrdersPolling
-});
+const withFetch = connect(
+  mapStateToProps,
+  {
+    startOrdersPolling
+  }
+);
 
 export const withLifecycle = lifecycle({
   componentDidMount() {
